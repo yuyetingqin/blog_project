@@ -1,10 +1,12 @@
 ﻿{% extends "base.html" %}
 {% load staticfiles %}
 
+{#广告栏#}
 {% block ad_info %}
     {% include 'ad.html' %}
 {% endblock %}
 
+{#文章列表 采用分页显示#}
 {% block blog_info %}
     {% for article in article_list %}
       <div class="blogs">
