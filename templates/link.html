@@ -1,0 +1,10 @@
+
+    <div class="links">
+      <h3><span>[<a href="/">申请友情链接</a>]</span>友情链接</h3>
+      <ul>
+
+        {% for link in link_list %}
+        <li><a href="{{ link.callback_url }}">{{ link.title }}</a></li>
+        {% endfor%}
+      </ul>
+    </div>
