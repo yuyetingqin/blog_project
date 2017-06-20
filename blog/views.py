@@ -29,6 +29,7 @@ def index(request):
 
     try:
         page = request.GET.get("page", 1)
+        print page
         article_list = paginator.page(page)
     except (EmptyPage, InvalidPage, PageNotAnInteger):
         article_list = paginator.page(1)

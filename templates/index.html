@@ -19,20 +19,25 @@
       </div>
     {% endfor %}
 
-{#    分页栏#}
+
+{#分页栏#}
 
     <p>
+        <div align="center">
+        {% if article_list.has_previous %}
+            <a href="?page={{ article_list.previous_page_number }}"><span>&lt;&lt;</span>上一页&nbsp;</a>
+        {% else %}
+            <span>&lt;&lt;</span>上一页 &nbsp;
+        {% endif %}
 
-    {% if article_list.has_previous %}
-        <a href="?page/{{ article_list.previous_page_number }}">上一页</a>
-    {% endif %}
+        {{ article_list.number }}/{{ article_list.paginator.num_pages }}
 
-    {{ article_list.count }}
-
-    {% if article_list.has_next %}
-        <a href="?page/{{ article_list.next_page_number }}">下一页</a>
-    {% endif %}
-
+        {% if article_list.has_next %}
+            <a href="?page={{ article_list.next_page_number }}">&nbsp;下一页<span>&gt;&gt;</span></a>
+        {% else %}
+            &nbsp;下一页<span>&gt;&gt;</span>
+        {% endif %}
+        </div>
     </p>
 
 
