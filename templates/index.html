@@ -8,6 +8,7 @@
 
 {#文章列表 采用分页显示#}
 {% block blog_info %}
+
     {% for article in article_list %}
       <div class="blogs">
         <figure><img src="uploads/{{ article.image_url }}"></figure>
@@ -19,26 +20,6 @@
       </div>
     {% endfor %}
 
-
-{#分页栏#}
-
-    <p>
-        <div align="center">
-        {% if article_list.has_previous %}
-            <a href="?page={{ article_list.previous_page_number }}"><span>&lt;&lt;</span>上一页&nbsp;</a>
-        {% else %}
-            <span>&lt;&lt;</span>上一页 &nbsp;
-        {% endif %}
-
-        {{ article_list.number }}/{{ article_list.paginator.num_pages }}
-
-        {% if article_list.has_next %}
-            <a href="?page={{ article_list.next_page_number }}">&nbsp;下一页<span>&gt;&gt;</span></a>
-        {% else %}
-            &nbsp;下一页<span>&gt;&gt;</span>
-        {% endif %}
-        </div>
-    </p>
-
-
+    {% include "paginator.html" %}
 {% endblock %}
+

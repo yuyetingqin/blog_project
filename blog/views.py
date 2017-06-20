@@ -18,6 +18,8 @@ def global_info(request):
     tag_list = Tag.objects.all()
     # 友情链接信息
     link_list = Links.objects.all()
+    # 图文推荐
+    tuwen_list = Article.objects.all().order_by("-date_publish")[:6]
 
     return locals()
 
@@ -25,14 +27,17 @@ def global_info(request):
 # 首页
 def index(request):
     article_list = Article.objects.all()
+
     paginator = Paginator(article_list, settings.PAGE_NUM)
 
     try:
         page = request.GET.get("page", 1)
-        print page
+        # print page
         article_list = paginator.page(page)
     except (EmptyPage, InvalidPage, PageNotAnInteger):
         article_list = paginator.page(1)
+
+    paginator_list = article_list
 
     return render(request, "index.html", locals())
 
