@@ -28,6 +28,7 @@ class ArticleAdmin(admin.ModelAdmin):
             "/static/js/kindeditor-4.1.7/config.js",
         )
 
+
 admin.site.register(Article, ArticleAdmin)
 
 admin.site.register(Ad)

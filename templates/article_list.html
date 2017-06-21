@@ -7,7 +7,7 @@
     <h2><span></span><b>{{ tag_info.name }}</b></h2>
     {% for article in tag_info.article_set.all %}
       <div class="blogs">
-        <figure><img src="uploads/{{ article.image_url }}"></figure>
+        <figure><img src="uploads/{{article.image_url}}"></figure>
         <ul>
           <h3><a href="{% url "article" article.id %}">{{ article.title }}</a></h3>
           <p>{{ article.content|safe|truncatewords:5}}</p>
