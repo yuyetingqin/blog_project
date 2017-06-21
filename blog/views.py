@@ -50,3 +50,15 @@ def article(request, article_id):
     article_info.save()
 
     return render(request, "article.html", locals())
+
+
+# 对应标签下的文章列表
+def article_list(request, tag_id):
+    tag_info = Tag.objects.get(id=tag_id)
+
+    return render(request, "article_list.html", locals())
+
+
+
+
+

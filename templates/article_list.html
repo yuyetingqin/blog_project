@@ -1,0 +1,22 @@
+﻿{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{#文章列表 采用分页显示#}
+{% block blog_info %}
+    <h2><span></span><b>{{ tag_info.name }}</b></h2>
+    {% for article in tag_info.article_set.all %}
+      <div class="blogs">
+        <figure><img src="uploads/{{ article.image_url }}"></figure>
+        <ul>
+          <h3><a href="{% url "article" article.id %}">{{ article.title }}</a></h3>
+          <p>{{ article.content|safe|truncatewords:5}}</p>
+          <p class="autor"><span class="lm f_l"><a href="/">{{ article.category.name }}</a></span><span class="dtime f_l">{{ article.date_publish|date:'Y-m-d' }}</span><span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span><span class="pingl f_r">评论（<a href="/">{{ article.comment.all.count|default:0}}</a>）</span></p>
+        </ul>
+      </div>
+    {% endfor %}
+
+{#分页模块#}
+{#    {% include "paginator.html" %}#}
+{% endblock %}
+
