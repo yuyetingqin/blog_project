@@ -61,7 +61,7 @@ class Article(models.Model):
     image_url = models.ImageField(default="article/default.jpg", upload_to="article/%Y/%m", max_length=150, verbose_name="文章图片")
     date_publish = models.DateTimeField(auto_now_add=True, verbose_name="发布时间")
     user = models.ForeignKey(User, verbose_name="用户")
-    ir = models.ForeignKey(Catagory, blank=True, null=True, verbose_name="分类")
+    category = models.ForeignKey(Catagory, blank=True, null=True, verbose_name="分类")
     tag = models.ManyToManyField(Tag, verbose_name="标签")
 
     class Meta:

@@ -12,14 +12,21 @@ def global_info(request):
     # 网站标题及描述
     site_title = settings.SITE_TITLE
     site_desc = settings.SITE_DESC
+
     # 广告信息 查询最新6条
     ad_img = Ad.objects.all().order_by("-id")[:6]
+
     # 标签云信息
     tag_list = Tag.objects.all()
+
     # 友情链接信息
     link_list = Links.objects.all()
+
     # 图文推荐
     tuwen_list = Article.objects.all().order_by("-date_publish")[:6]
+
+    #点击排行榜
+    article_list = Article.objects.all().order_by("-click_count")[:6]
 
     return locals()
 

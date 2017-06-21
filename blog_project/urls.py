@@ -9,7 +9,7 @@ urlpatterns = [
     # url(r'^$', 'blog_project.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url("^uploads/(?P<path>.*)$", "django.views.static.serve", {"document_root": settings.MEDIA_ROOT,}),
+    url("^uploads/(?P<path>.*)$", "django.views.static.serve", {"document_root": settings.MEDIA_ROOT}),
 
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload_image, name="upload_image"),
 
