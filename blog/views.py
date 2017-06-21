@@ -41,3 +41,12 @@ def index(request):
 
     return render(request, "index.html", locals())
 
+
+# 文章详情显示
+def article(request, article_id):
+
+    article_info = Article.objects.get(id=article_id)
+    article_info.click_count = article_info.click_count + 1
+    article_info.save()
+
+    return render(request, "article.html", locals())

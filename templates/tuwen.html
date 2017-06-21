@@ -1,11 +1,13 @@
-    <div class="tuwen">
-      <h3>图文推荐</h3>
-      <ul>
-        {% for tuwen in tuwen_list %}
-        <li><a href="/"><img src="uploads/{{ tuwen.image_url }}"><b>{{ tuwen.title }}</b></a>
-          <p><span class="tulanmu"><a href="/">{{ tuwen.category.name }}</a></span><span class="tutime">{{ tuwen.date_publish|date:"Y-m-d" }}</span></p>
-        </li>
-        {% endfor %}
+{% load staticfiles %}
 
-      </ul>
-    </div>
+<div class="tuwen">
+  <h3>图文推荐</h3>
+  <ul>
+    {% for tuwen in tuwen_list %}
+    <li><a href="{% url "article" tuwen.id %}"><img src="/uploads/{{ tuwen.image_url}}"><b>{{ tuwen.title }}</b></a>
+      <p><span class="tulanmu"><a href="{% url "article" tuwen.id %}">{{ tuwen.category.name }}</a></span><span class="tutime">{{ tuwen.date_publish|date:"Y-m-d" }}</span></p>
+    </li>
+    {% endfor %}
+
+  </ul>
+</div>
