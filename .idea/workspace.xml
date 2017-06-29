@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4670e32-28cb-4a34-abdc-4f4606193bb2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/ad.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/article.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/article_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/base_bak.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/link.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/paginator.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/tabwidget.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/tag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/tuwen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/blog/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -603,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498054220798</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="将 templates 目录拷贝到应用目录下，删除全局 templates 目录下的部分页面文件。">
+      <created>1498729301718</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1498729301718</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -680,7 +675,8 @@
     <MESSAGE value="添加文章详情" />
     <MESSAGE value="修复了图文部分的图片显示，添加了文章阅读记录" />
     <MESSAGE value="修复了标签云链接中的文章图片显示问题， 修改了标签切换部分的代码。" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了标签云链接中的文章图片显示问题， 修改了标签切换部分的代码。" />
+    <MESSAGE value="将 templates 目录拷贝到应用目录下，删除全局 templates 目录下的部分页面文件。" />
+    <option name="LAST_COMMIT_MESSAGE" value="将 templates 目录拷贝到应用目录下，删除全局 templates 目录下的部分页面文件。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
