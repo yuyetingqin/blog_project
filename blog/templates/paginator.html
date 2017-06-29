@@ -1,0 +1,21 @@
+
+{#分页栏#}
+
+<p>
+<br/>
+    <div align="center">
+    {% if paginator_list.has_previous %}
+        <a href="?page={{ paginator_list.previous_page_number }}"><b><span>&lt;&lt;</span>上一页</b>&nbsp;</a>
+    {% else %}
+        <span>&lt;&lt;</span>上一页 &nbsp;
+    {% endif %}
+
+    {{ paginator_list.number }}/{{ paginator_list.paginator.num_pages }}
+
+    {% if paginator_list.has_next %}
+        <a href="?page={{ paginator_list.next_page_number }}">&nbsp;<b>下一页<span>&gt;&gt;</b></span></a>
+    {% else %}
+        &nbsp;下一页<span>&gt;&gt;</span>
+    {% endif %}
+    </div>
+</p>
