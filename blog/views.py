@@ -33,6 +33,7 @@ def global_info(request):
 
 # 首页
 def index(request):
+    print request.user.is_authenticated()
     article_list = Article.objects.all()
 
     paginator = Paginator(article_list, settings.PAGE_NUM)

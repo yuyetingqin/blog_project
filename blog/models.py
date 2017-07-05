@@ -9,7 +9,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 # 用户模型
 class User(AbstractUser):
-    avatar = models.ImageField(upload_to="avatar/%Y/%d", default="avatar/default.jpgmak", max_length=200)
+    avatar = models.ImageField(upload_to="avatar/%Y/%d", default="avatar/default.jpg", verbose_name="用户图像", max_length=200)
     qq = models.CharField(max_length=15, blank=True, null=True, verbose_name="qq号")
     mobile = models.CharField(max_length=11, blank=True, null=True, unique=True, verbose_name="手机号")
 
