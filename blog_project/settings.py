@@ -116,13 +116,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 
 
-#自定义用户
+#自定义用户模型
 AUTH_USER_MODEL = 'blog.User'
 
 
+#自定义登录首页
+LOGIN_URL="login"
+
 
 #全局配置设置
-
 SITE_TITLE = "小白兔"
 SITE_DESC = "兔小白的窝，欢迎大家交流学习！"
 PAGE_NUM = 4

@@ -1,7 +1,9 @@
 # *_* coding: utf-8 *_*
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator, EmptyPage, InvalidPage, PageNotAnInteger
 from blog.models import Article, Tag, Comment, Catagory, User, Ad, Links
 # Create your views here.
@@ -32,6 +34,7 @@ def global_info(request):
 
 
 # 首页
+@login_required(login_url='/login/')
 def index(request):
     print request.user.is_authenticated()
     article_list = Article.objects.all()
@@ -62,11 +65,30 @@ def article(request, article_id):
 
 # 对应标签下的文章列表
 def article_list(request, tag_id):
-    tag_info = Tag.objects.get(id=tag_id)
+    tag_id = tag_id
+    if tag_id == "0":
+        tag_info = Article.objects.all()
+    else:
+        tag_info = Tag.objects.get(id=tag_id)
 
     return render(request, "article_list.html", locals())
 
 
-
-
-
+#首页登录
+def login(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            print "登录验证成功!"
+            return redirect("/")
+        else:
+            return render(request, "login.html", {"error" : "该用户未激活!"})
+    else:
+        if username == "":
+            msg = "请输入账号和密码!"
+        else:
+            msg = "用户名或密码错误，请重新输入!"
+        return render(request, "login.html", {"error" : msg })
