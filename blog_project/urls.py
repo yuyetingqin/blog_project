@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from blog.views import index, article, article_list, login
+from blog.views import index, article, article_list, login_site, logout_site, register_site
 from django.conf import settings
 from blog.upload import upload_image
 
@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^article/(\d+)$', article, name="article"),
     url(r'^tag/(\d+)$', article_list, name="article_list"),
-    url(r'^login/$', login, name="login"),
+    url(r'^login/$',  login_site,  name="login"),
+    url(r'^logout/$', logout_site, name="logout"),
+    url(r'^register/$', register_site, name="register"),
 
 ]

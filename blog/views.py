@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, EmptyPage, InvalidPage, PageNotAnInteger
 from blog.models import Article, Tag, Comment, Catagory, User, Ad, Links
 # Create your views here.
@@ -75,11 +75,12 @@ def article_list(request, tag_id):
 
 
 #首页登录
-def login(request):
+def login_site(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
+    print "username:%s, password:%s" % (username, password)
     user = authenticate(username=username, password=password)
-    if user is not None:
+    if user is not None :
         if user.is_active:
             login(request, user)
             print "登录验证成功!"
@@ -92,3 +93,31 @@ def login(request):
         else:
             msg = "用户名或密码错误，请重新输入!"
         return render(request, "login.html", {"error" : msg })
+
+
+#登出
+def logout_site(request):
+    logout(request)
+    return redirect("/login/")
+
+
+#注册
+def register_site(request):
+    if request.method == "POST":
+        username = request.POST.get('username', '')
+        password = request.POST.get('password1', '').strip()
+        password2 = request.POST.get('password2', '').strip()
+        email = request.POST.get('email', '')
+        mobile = request.POST.get('phone', '')
+
+        if username != '' and password == password2 and email != '' and mobile != '':
+            user = User.objects.create_user(username=username, password=password, mobile=mobile, email=email)
+            user.save()
+            return redirect("/login/")
+
+        else:
+            return render(request, "register.html", )
+    return render(request, "register.html", )
+
+
+

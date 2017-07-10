@@ -25,6 +25,13 @@
     <h1>{{ site_title }}</h1>
     <p>{{ site_desc }}</p>
   </div>
+  <div class="f_r">
+      {% if user.is_authenticated %}
+        <h3>欢迎，{{ user.username }} <img src="/uploads/{{ user.avatar }}" height="50" width="50"> <a href="{% url 'logout' %}">登出</a></h3>
+      {% else %}
+        <h3>欢迎新用户 <a href="{% url 'login' %}">登陆</a></h3>
+      {% endif %}
+  </div>
   <nav id="topnav" class="f_r">
     <ul>
       <a href="{% url "index" %}" target="_blank">首页</a> <a href="p.html" target="_blank">文章</a> <a href="c.html" target="_blank">心灵鸡汤</a> <a href="news.html" target="_blank">关于我</a>
