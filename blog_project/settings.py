@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
                 'blog.views.global_info',
             ],
         },
@@ -121,7 +122,9 @@ AUTH_USER_MODEL = 'blog.User'
 
 
 #自定义登录首页
-LOGIN_URL="login"
+LOGIN_URL = "/login/"
+
+# LOGIN_REDIRECT_URL = '/'
 
 
 #全局配置设置

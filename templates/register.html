@@ -23,12 +23,13 @@
             <h3>欢迎注册</h3>
                 <form action="" method="post">{% csrf_token %}
                     <input name="username" type="text" class="kuang_txt name" placeholder="用户名">
-                    <input name="possword1" type="text" class="kuang_txt possword" placeholder="密码">
-                    <input name="possword2" type="text" class="kuang_txt possword" placeholder="密码">
+                    <input name="pwd1" type="password" class="kuang_txt possword" placeholder="密码">
+                    <input name="pwd2" type="password" class="kuang_txt possword" placeholder="确认密码">
                     <input name="email" type="text" class="kuang_txt email" placeholder="邮箱">
                     <input name="phone" type="text" class="kuang_txt phone" placeholder="手机号">
                     
-                    <input name="注册" type="submit" class="btn_zhuce" value="注册">                    
+                    <input name="注册" type="submit" class="btn_zhuce" value="注册">
+                    <p>已注册用户，请 <a href="{% url 'login' %}">登录</a></p>
                 </form>
             </div>
         </div>

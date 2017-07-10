@@ -14,7 +14,7 @@
 		<div class="container">
 			<h1>Welcome</h1>
 			
-			<form class="form" method="post" action="/login/">
+			<form class="form" method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 {% if error %}
                     <p>{{ error }}</p>
@@ -22,7 +22,7 @@
 				<input type="text" name="username" placeholder="Username">
 				<input type="password" name="password" placeholder="Password">
 				<button type="submit" id="login-button">登录</button>
-                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="hidden" name="next" value="{{ request.GET.next }}" />
                 <p>新用户，请先<a href="{% url 'register' %}">注册</a></p>
 			</form>
 		</div>

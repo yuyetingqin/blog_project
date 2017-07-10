@@ -34,9 +34,9 @@ def global_info(request):
 
 
 # 首页
-@login_required(login_url='/login/')
+@login_required(redirect_field_name='next', login_url='/login/')
 def index(request):
-    print request.user.is_authenticated()
+    # print request.user.is_authenticated()
     article_list = Article.objects.all()
 
     paginator = Paginator(article_list, settings.PAGE_NUM)
@@ -64,6 +64,7 @@ def article(request, article_id):
 
 
 # 对应标签下的文章列表
+@login_required()
 def article_list(request, tag_id):
     tag_id = tag_id
     if tag_id == "0":
@@ -78,21 +79,21 @@ def article_list(request, tag_id):
 def login_site(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
-    print "username:%s, password:%s" % (username, password)
+    next_info = request.POST.get('next', '/')
+    # print next_info
     user = authenticate(username=username, password=password)
     if user is not None :
         if user.is_active:
             login(request, user)
-            print "登录验证成功!"
-            return redirect("/")
+            return redirect(request.POST.get('next', '/'))
         else:
-            return render(request, "login.html", {"error" : "该用户未激活!"})
+            return render(request, "login.html", {"error": "该用户未激活!"})
     else:
         if username == "":
             msg = "请输入账号和密码!"
         else:
             msg = "用户名或密码错误，请重新输入!"
-        return render(request, "login.html", {"error" : msg })
+        return render(request, "login.html", {"error": msg})
 
 
 #登出
@@ -105,16 +106,15 @@ def logout_site(request):
 def register_site(request):
     if request.method == "POST":
         username = request.POST.get('username', '')
-        password = request.POST.get('password1', '').strip()
-        password2 = request.POST.get('password2', '').strip()
+        password = request.POST.get('pwd1', '').strip()
+        password2 = request.POST.get('pwd2', '').strip()
         email = request.POST.get('email', '')
         mobile = request.POST.get('phone', '')
-
+        # print username, password, email
         if username != '' and password == password2 and email != '' and mobile != '':
             user = User.objects.create_user(username=username, password=password, mobile=mobile, email=email)
             user.save()
             return redirect("/login/")
-
         else:
             return render(request, "register.html", )
     return render(request, "register.html", )
